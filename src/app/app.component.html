@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Angular Componet</h1>
+  <p>Date : {{date | async | date:"HH:mm:ss yyyy"}}</p>
+  <app-post-form
+    (onAdd)="updatePosts($event)"
+  ></app-post-form>
+  <button class="btn btn-primary" (click) ='isVisible = !isVisible'>Show Paragraphe</button>
+  <!-- first way -->
+  <!--
+    <div class="wrap">
+    <p *ngIf="isVisible">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores officia natus at officiis excepturi quae suscipit dolorem porro soluta esse.
+    </p>
+  </div> -->
+
+  <!-- second way -->
+  <ng-template [ngIf]="isVisible">
+    <div class="wrap">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores officia natus at officiis excepturi quae suscipit dolorem porro soluta esse.
+      </p>
+    </div>
+  </ng-template>
+  <hr>
+  <button class="btn" (click)="addPost()">Add Post</button>
+  <hr>
+  <button class="btn" (click)="searchField = 'title'">Title</button>
+  <button class="btn" (click)="searchField = 'text'">Text</button>
+  <input type="text" [(ngModel)]="search">
+  <app-post
+    *ngFor = "let post of posts | filter:search:searchField"
+    [post] = post
+    (onRemove)="removePost($event)"
+  >
+    <div #info>
+      <small *ngIf="post.text.length > 10; else short">Long Post</small>
+      <ng-template #short>
+        <small>Short Post</small>
+      </ng-template>
+    </div>  
+  </app-post>
+</div>

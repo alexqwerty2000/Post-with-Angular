@@ -1,0 +1,19 @@
+<div>
+    <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Title..."
+        [(ngModel)]="title"
+        #titleInput
+        >
+    <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Text..."
+        [(ngModel)]="text">
+    <button class='btn' (click) = "addPost()">Add Post</button>
+    <button class='btn' (click)='focusTitle()'>Focus Title</button>
+    <p appStyle='red' [dStyles]="{ border:'1px solid navy',fontWeight: 'bold', borderRadius:'5px'}"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dicta, harum dolorum animi eveniet dignissimos earum quod dolores reprehenderit omnis!</p>
+    <p appStyle='green' [dStyles]="{ border:'1px solid brown',fontWeight: 'bold', borderRadius:'5px'}"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dicta, harum dolorum animi eveniet dignissimos earum quod dolores reprehenderit omnis!</p>
+
+</div>
